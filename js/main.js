@@ -338,35 +338,35 @@ function playAudio(src){
     _playNow();
   }
 
-	function _playNow(){
+  function _playNow(){
 
-		audioPlayer1.volume = 0;
-		audioPlayer2.volume = 0;
+    audioPlayer1.volume = 0;
+    audioPlayer2.volume = 0;
 
-		audioPlayer1.src = src;
-		audioPlayer2.src = src;
+    audioPlayer1.src = src;
+    audioPlayer2.src = src;
 
-		audioPlayer1.load();
-		audioPlayer2.load();
+    audioPlayer1.load();
+    audioPlayer2.load();
 
-		/* Wait for the duration value to exist
-		 * we don't mind about this happening async as it's ambient sound
-		 * */
-		audioPlayer1.ondurationchange = function(){
-			/* Start the second player half way through to give loop continuity */
-			audioPlayer2.currentTime = audioPlayer1.duration / 2;
-		}
+    /* Wait for the duration value to exist
+     * we don't mind about this happening async as it's ambient sound
+     * */
+    audioPlayer1.ondurationchange = function(){
+      /* Start the second player half way through to give loop continuity */
+      audioPlayer2.currentTime = audioPlayer1.duration / 2;
+    }
 
-		audioPlayer1.play();
+    audioPlayer1.play();
 
-		fadeAudio(IN);
+    fadeAudio(IN);
 
     /* Lets not play indefinitely.. 4 minutes? */
     setTimeout(function(){
       fadeAudio(OUT);
     }, 4*60*1000);
 
-	}
+  }
 }
 
 function pauseAudio(){
