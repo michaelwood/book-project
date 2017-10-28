@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  </head>
+  <body>
+
+    <!--
+      Gapless audio loop we have two players one slightly
+      ahead of the other. Fine for ambient noise.
+    -->
+    <audio loop="true" preload="auto"  id="audio-player1" controls="true" volume="0" style="bottom: 0px;">
+    </audio>
+    <audio loop="true" preload="auto" id="audio-player2" controls="true" volume="0" style="bottom: 20px;">
+    </audio>
+
+    <!-- Modal for showing texts -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="texts-modal" style="display:none">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a href="#" data-dismiss="modal">
+              <img src="./svg/close.svg"
+               title="Close"
+               alt="Close"
+               style="height: 30px; width 30px; float: right;"
+               />
+            </a>
+ 
+            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">title</h4> -->
+          </div>
+          <div class="modal-body">
+            <iframe id="text-frame" src="">
+            </iframe>
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Modal for showing mini books -->
+    <div tabindex="-1" id="minibooks-modal" tabindex="-1" role="dialog">
+			<div class="minibooks-content">
+        <a href="#" id="minibook-page">
+          <img src="" id="minibook-page-image" />
+          <img src="" id="next-minibook-page-image" style="display:none"/>
+        </a>
+        <div id="minibooks-pagination-area">
+        <!-- pagination -->
+        <a href="#" class="minibook-paginate" id="minibook-pg-previous">
+          <img src="./svg/arrow-left.svg"
+               alt="Previous page"
+               title="Previous" />
+       </a>
+
+       <a href="#" class="minibook-paginate" id="minibook-close">
+          <img src="./svg/close.svg"
+               title="Close"
+               alt="Close"/>
+        </a>
+ 
+       <a href="#" class="minibook-paginate" id="minibook-pg-next">
+          <img src="./svg/arrow-left.svg"
+               title="Next"
+               alt="Page next"/>
+        </a>
+        </div>
+
+			</div> <!-- /minibooks-content -->
+		</div>
+
+    <!-- Main page content -->
+    <div class="content">
+      <div class="container">
+        <div id="svg-container">
+          <!-- These used to be part of the SVG but animating them
+            was too slow in most browsers -->
+          <img src="./imgs/0.jpg" id="pg-0-bg" class="main-page-image" />
+          <img src="./imgs/1.jpg" id="pg-1-bg" class="main-page-image" />
+          <img src="./imgs/2.jpg" id="pg-2-bg" class="main-page-image" />
+          <img src="./imgs/3.jpg" id="pg-3-bg" class="main-page-image" />
+          <img src="./imgs/4.jpg" id="pg-4-bg" class="main-page-image" />
+          <img src="./imgs/5.jpg" id="pg-5-bg" class="main-page-image" />
+          <img src="./imgs/6.jpg" id="pg-6-bg" class="main-page-image" />
+          <img src="./imgs/7.jpg" id="pg-7-bg" class="main-page-image" />
+          <img src="./imgs/8.jpg" id="pg-8-bg" class="main-page-image" />
+          <img src="./imgs/9.jpg" id="pg-9-bg" class="main-page-image" />
+
+        <!-- Main page SVG. This is where click targets are loaded onto -->
+        <svg version="1.1"
+          id="page"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 1572 692"  data-display="yes">
+          <defs>
+
+          <filter id="drop-shadow" x="0" y="0" width="200%" height="200%">
+            <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+          </filter>
+
+          <filter style="color-interpolation-filters:sRGB"
+                  id="depth-blur"
+                  x="0"
+                  width="1"
+                  y="0"
+                  height="1">
+          <feGaussianBlur
+                  stdDeviation="2"
+                  id="feGaussianBlur4255" />
+          </filter>
+
+          </defs>
+
+        </svg>
+
+        <!-- Page drop shadow -->
+        <svg version="1.1"
+          id="drop-shadow-for-page"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 1572 692"  data-display="yes"
+					style="z-index: -2"	>
+          <defs>
+
+          <filter id="drop-shadow" x="0" y="0" width="200%" height="200%">
+            <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+          </filter>
+
+          </defs>
+
+          <rect style="fill-opacity:1;fill:#b0b3b8;"
+                class="half-width-shadow"
+                filter="url(#drop-shadow)"
+                id="drop-shadow-rect"
+                width="748px"
+                height="40"
+                x="400"
+                y="600"
+                rx="5"
+                ry="5" />
+
+				</svg>
+
+
+        </div> <!-- /svg-container -->
+
+        <!-- main page pagination -->
+        <a href="#" class="paginate" id="previous">
+          <img src="./svg/arrow-left.svg"
+               alt="Previous page"
+               title="Previous" />
+        </a>
+        <a href="#" class="paginate" id="next">
+          <img src="./svg/arrow-left.svg"
+               title="Next"
+               alt="Page next"/>
+        </a>
+
+
+      </div><!-- /container -->
+
+    </div> <!-- /content -->
+
+    <div id="under-main-page">
+      <p><a href="#0">&lArr; Start</a> <span id="page-number">0</span>/9 <a href="#9">End &rArr;</a></p>
+      <p id="copyright-notice">&copy; 2017 Linda Murgatroyd. <a href="./files/List_of_Sources.pdf">See List of Sources for sources of quotes</a></p>
+    </div>
+
+
+    <!-- iframe which is used to get test the correct height of the text -->
+    <iframe id="text-test-frame" src="" style="visibility: hidden; width: 50%">
+    </iframe>
+  </body>
+
+  <script src="./js/jquery-3.1.1.min.js" type="text/javascript"></script>
+  <script src="./bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="./js/main.js" type="text/javascript"></script>
+  <script src="./config.js" type="text/javascript"></script>
+</html>
