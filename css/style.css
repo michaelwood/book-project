@@ -2,10 +2,6 @@
   display: none;
 }*/
 
-svg {
-  margin: 15px 15 0 15;
-}
-
 .modal-content{
   background-image: url("./imgs/text-bg.jpg");
 }
@@ -185,15 +181,17 @@ rect.click-target-outerborder {
   margin: auto;
 }
 
-svg {
+svg#page, svg#drop-shadow-for-page {
   z-index: 1;
   position: absolute;
   top: 10px;
-  min-height: 642px;
-  min-width: 1572px;
-  left: 10px;
+  height: auto;
   width: 95%;
   margin: 10px 2% 10px 2%;
+}
+
+svg#drop-shadow-for-page {
+  z-index: -5;
 }
 
 .main-page-image:first-child {
@@ -201,15 +199,14 @@ svg {
 }
 
 .main-page-image {
- width: 95%;
- min-height: 642px;
- min-width: 1572px;
+ z-index: -1;
  position: absolute;
  top: 10px;
- left: 10px;
- opacity: 0;
- z-index: -1;
+ height: auto;
+ width: 95%;
  margin: 10px 2% 10px 2%;
+ opacity: 0;
+
 }
 
 #under-main-page {
