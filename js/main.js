@@ -482,9 +482,16 @@ $(document).ready(function(){
     pageFromUrl();
   });
 
+  if (window.orientation != undefined && window.orientation == 0){
+    alert("Best viewed in landscape");
+
+  }
+
   alignPageChrome();
   updateFwdNextBtns();
   pageFromUrl();
   updateClickTargets();
+
+
 
 }); /* end document ready function */
