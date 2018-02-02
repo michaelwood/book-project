@@ -368,7 +368,6 @@ var config = {
   },
   {
     name: "childrens-room",
-    audio: "audio/MW_sampled_156909__alistair-i-macdonald__cafe-noise.mp3",
     clickTargets: [
 
       {
