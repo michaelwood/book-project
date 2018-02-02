@@ -16,7 +16,7 @@ var config = {
     name: "front-cover",
     showPagination: true,
     clickTargets: [
-    { 
+    {
       name: "title",
       width: 450,
       height: 212,
@@ -34,7 +34,7 @@ var config = {
     name: "title-page",
     showPagination: true,
     clickTargets: [
-    { 
+    {
       name: "introduction",
       width: 424,
       height: 123,
@@ -42,7 +42,7 @@ var config = {
       y: 45,
       goesTo: "texts://intro-and-statement.html",
     },
-    { 
+    {
       name: "inside-title",
       width: 512,
       height: 240,
@@ -59,7 +59,7 @@ var config = {
     showPagination: true,
     audio: "audio/MW_sampled_269405__kiefspoon__road-traffic-ambience-in-london.mp3",
     clickTargets: [
-    { 
+    {
       name: "demo",
       width: 204,
       height: 164,
@@ -67,7 +67,7 @@ var config = {
       y: 475,
       goesTo: "texts://a.html",
     },
-    { 
+    {
       name: "poster",
       width: 102,
       height: 133,
@@ -75,7 +75,7 @@ var config = {
       y: 459,
       goesTo: "texts://a.html",
     },
-    { 
+    {
       name: "dove",
       width: 127,
       height: 52,
@@ -83,7 +83,7 @@ var config = {
       y: 304,
       goesTo: "texts://a.html",
     },
-    { 
+    {
       name: "noticeboard",
       width: 289,
       height: 187,
@@ -186,7 +186,7 @@ var config = {
         x: 1327,
         y: 103,
         goesTo: "minibooks://book-4",
-      }, 
+      },
       {
         name: "booklet-5",
         width: 94,
@@ -291,7 +291,7 @@ var config = {
         x: 453,
         y: 211,
         goesTo: "minibooks://book-13",
-      }, 
+      },
       {
         name: "booklet-14",
         width: 104,
@@ -459,7 +459,6 @@ var config = {
         y: 370,
         goesTo: "back-garden",
       },
-      
     ],
   },
   {
