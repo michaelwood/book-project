@@ -486,7 +486,7 @@ var config = {
       height: 22,
       x: 168,
       y: 402,
-      goesTo: "text-o",
+      goesTo: "texts://o.html",
     },
     {
       name: "tomb-curle",
