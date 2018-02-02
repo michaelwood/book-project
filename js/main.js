@@ -6,6 +6,7 @@
 
 var currentPage = 0;
 var currentMiniBookPage = 0;
+var missClicks = 0;
 
 /* Save some typing and alias this function */
 function newSvgElement(type){
@@ -458,6 +459,18 @@ $(document).ready(function(){
   $("#minibook-close").click(function(e){
     e.preventDefault();
     hideMiniBooksModal();
+  });
+
+
+  /* If there are lots of miss-clicks then show the hints again */
+  $("#page").click(function(e){
+    missClicks++;
+
+    if (missClicks > 1)
+      updateClickTargets();
+    setTimeout(function(){
+      missClicks = 0;
+    }, 2000);
   });
 
   $(window).resize(function(){
