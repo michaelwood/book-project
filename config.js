@@ -197,6 +197,14 @@ var config = {
       },
       /* Row 2 */
       {
+        name: "q-books-and-libraries",
+        width: 79,
+        height: 51,
+        x: 837,
+        y: 274,
+        goesTo: "texts://books-and-libraries.html",
+      },
+      {
         name: "booklet-6",
         width: 91,
         height: 22,
