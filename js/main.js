@@ -425,13 +425,17 @@ $(document).ready(function(){
       updateFwdNextBtns();
       break;
     case "n":
+    case "ArrowRight":
       changeMainPage(+1);
       break;
+    case "ArrowLeft":
     case "p":
       changeMainPage(-1);
       break;
+    case "Escape":
+      hideMiniBooksModal();
+      break;
     }
-
   })
 
   /* Calculate the size that the text modal dialog will need to be by testing
