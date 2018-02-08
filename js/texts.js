@@ -1,11 +1,8 @@
-$(document).ready(function(){
+$(window).on('load', function(){
   var frameHeight = {
     height: $(this).height(),
     width: $(this).width()
   };
-  parent.postMessage(frameHeight, "*");
 
-  $("img").each(function(){
-    $(this).parent().append("<a href=####>");
-  });
+  window.parent.postMessage(frameHeight, "*");
 });
