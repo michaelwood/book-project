@@ -156,6 +156,8 @@ function updateClickTargets(){
     return;
   }
 
+  var miniBooksToCache = '';
+
   for (var clickTargetI in clickTargets){
     /* Create the click target element */
     var target = newSvgElement("a");
@@ -183,6 +185,9 @@ function updateClickTargets(){
     });
     */
 
+    if (clickTargets[clickTargetI].goesTo.indexOf("minibooks://") > -1) {
+      miniBooksToCache += ' ' + clickTargets[clickTargetI].goesTo.substr("minibooks://".length);
+    }
 
     target.click(function(){
       $(this).attr("opacity", 0);
@@ -200,6 +205,21 @@ function updateClickTargets(){
       }
     });
     svg.append(target);
+  }
+
+  warmCacheMiniBooks(miniBooksToCache);
+}
+
+function warmCacheMiniBooks(books){
+  /* find the miniBook config */
+  for (var i in config.miniBooks){
+    if (books.indexOf(config.miniBooks[i].name) > -1){
+      var miniBook = config.miniBooks[i];
+      /* console.log("Caching "+miniBook.pages[0]); */
+      try {
+        $.get("./minibooks/"+miniBook.pages[0]);
+      } catch (e) {}
+    }
   }
 }
 
@@ -225,6 +245,7 @@ function showMiniBooksModal(uri){
    * modal dialog
    */
   $("#pg-"+currentPage+"-bg").setDepthBlur(true);
+
   $("#minibooks-modal").fadeIn();
 }
 
