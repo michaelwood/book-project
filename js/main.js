@@ -26,7 +26,6 @@ function newSvgElement(type){
   }
 
   $.fn.animateAttr = function(prop, toValue){
-    console.log(this);
     var time = setInterval(animationFrame, 4);
 
     var currentValue = Number(this.attr(prop));
@@ -74,8 +73,6 @@ function goToPage(page){
     }
   }
 
-  console.log("going to page " + page);
-
   if (!config.pages[page]){
     console.log("No such page:" + page);
     return;
@@ -105,7 +102,6 @@ function goToPage(page){
 
   /* This is happening for each of the animations? */
   newPage.one("animationend", function(e){
-    console.log("animationend");
     updateClickTargets();
 
     if (config.pages[currentPage].hasOwnProperty("audio")){
@@ -181,10 +177,12 @@ function updateClickTargets(){
     rect.addClass("click-target");
     target.append(rect);
 
-    /* debug */
+    /* debug
     target.on("mouseover", function(){
       console.log($(this).attr("goto"));
     });
+    */
+
 
     target.click(function(){
       $(this).attr("opacity", 0);
@@ -380,13 +378,11 @@ $(document).ready(function(){
 
   $("#previous").click(function(e){
     e.preventDefault();
-    console.log("prev clicked");
     changeMainPage(-1);
   });
 
   $("#next").click(function(e){
     e.preventDefault();
-    console.log("next clicked");
     changeMainPage(+1);
   });
 
