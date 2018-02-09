@@ -105,6 +105,7 @@ var config = {
   /* Library page 1 */
   {
     name: "library",
+    showPagination: true,
     clickTargets: [
       {
         name: "painting",
@@ -259,6 +260,7 @@ var config = {
   },
   {
     name: "meeting-room",
+    showPagination: true,
     clickTargets: [
     {
         name: "library-sign",
@@ -368,6 +370,7 @@ var config = {
   },
   {
     name: "childrens-room",
+    showPagination: true,
     clickTargets: [
 
       {
@@ -470,6 +473,7 @@ var config = {
   },
   {
     name: "back-garden",
+    showPagination: true,
     audio: "audio/MW_sampled_101393__earthsounds__garden-birds-3.mp3",
     clickTargets: [
     {
