@@ -39,7 +39,7 @@ function newSvgElement(type){
       }
     }
     return this;
-  }   
+  }
 }(jQuery));
 
 
@@ -48,7 +48,7 @@ Number.prototype.clamp = function(min, max) {
 };
 
 /*
- * paginate: +/- number of pages 
+ * paginate: +/- number of page
  */
 function changeMainPage(paginate){
   if (!config.pages[currentPage + paginate]){
@@ -107,11 +107,11 @@ function goToPage(page){
     if (config.pages[currentPage].hasOwnProperty("audio")){
       playAudio(config.pages[currentPage].audio);
     }
-  }); 
+  });
 
   /* For the first and last pages we have the book closed so it's half the
    * width; adjust the drop shadow width accordingly
-   */ 
+   */
   if (currentPage === 0 || currentPage === (config.pages.length -1)){
     $("#drop-shadow-rect").attr({x: 400, width: 748});
   } else {
@@ -126,7 +126,7 @@ function alignPageChrome(){
   $("#under-main-page").css("top", pageHeight);
 }
 
-/* Check if we can actually go either fwd or next and update visibility of 
+/* Check if we can actually go either fwd or next and update visibility of
  * buttons accordingly
  */
 function updateFwdNextBtns(){
@@ -146,7 +146,7 @@ function updateFwdNextBtns(){
 function updateClickTargets(){
   /* Get rid of the old ones */
   var svg = $("svg#page");
-  
+
   svg.children("a").remove();
 
   try {
@@ -246,13 +246,15 @@ function showMiniBooksModal(uri){
    */
   $("#pg-"+currentPage+"-bg").setDepthBlur(true);
 
+  $(".paginate").hide();
   $("#minibooks-modal").fadeIn();
 }
 
 function hideMiniBooksModal(){
   $("#minibooks-modal").fadeOut(function(){
     $("#pg-"+currentPage+"-bg").setDepthBlur(false);
-    $("#minibook-page-image").attr("src", ""); 
+    $("#minibook-page-image").attr("src", "");
+    $(".paginate").show();
   });
 }
 
@@ -352,7 +354,6 @@ function playAudio(src){
         clearInterval(enque);
         _playNow();
       }
-      
     }, 300);
   } else {
     _playNow();
@@ -445,7 +446,7 @@ $(document).ready(function(){
   window.addEventListener("message", function(e){
     var textModal = $("#texts-modal")
     var textModalIframe = textModal.find("iframe");
-   
+
     /* If the upcoming modal already is the same as the test then we've already
      * completed the test and this message came from the actual document and
      * not the test version */
@@ -499,7 +500,7 @@ $(document).ready(function(){
     alignPageChrome();
   });
 
-  $(window).on("hashchange", function(){ 
+  $(window).on("hashchange", function(){
     pageFromUrl();
   });
 
