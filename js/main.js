@@ -395,7 +395,13 @@ function pauseAudio(){
 }
 
 $(document).ready(function(){
-  
+
+  /* Contact */
+  $("#sdf").click(function(){
+    $("#sdg").text("%@comingtoaquakermeeting.org.uk".replace("%", "linda"));
+  });
+
+
   /* Connect up click handlers */
 
   $("#previous").click(function(e){
