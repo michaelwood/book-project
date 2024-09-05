@@ -104,9 +104,10 @@ function goToPage(page){
   newPage.one("animationend", function(e){
     updateClickTargets();
 
+    /* Audio temp disabled due to bug in iphone devices/safari 
     if (config.pages[currentPage].hasOwnProperty("audio")){
-      playAudio(config.pages[currentPage].audio);
-    }
+     // playAudio(config.pages[currentPage].audio);
+    }*/
   });
 
   /* For the first and last pages we have the book closed so it's half the
