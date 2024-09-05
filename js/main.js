@@ -512,8 +512,7 @@ $(document).ready(function(){
   });
 
   if (window.orientation != undefined && window.orientation == 0){
-    alert("Best viewed in landscape");
-
+    alert("Best experienced in landscape / on a PC");
   }
 
   alignPageChrome();
